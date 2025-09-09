@@ -13,10 +13,6 @@ const Login = () => {
 
     const payload = { email, password };
     console.log(payload);
-    // TODO: make API call
-
-    // Optional: reset after successful submit
-    form.reset(); // clears back to initial values
     navigate("/dashboard");
   };
 
@@ -34,28 +30,28 @@ const Login = () => {
           <input
             type="email"
             placeholder="Enter your email"
-            className="border rounded p-2"
+            className="border rounded p-2 w-full"
             name="email"
             // defaultValue can define initial state that reset() returns to
           />
           <input
             type="password"
             placeholder="Enter your password"
-            className="border rounded p-2"
+            className="border rounded p-2 w-full"
             name="password"
           />
 
-          <div className="flex gap-3">
+          <div className="flex gap-3 w-full">
             <button
               type="submit"
-              className="bg-blue-800 text-white p-2 rounded cursor-pointer"
+              className="bg-blue-800 text-white p-2 rounded cursor-pointer w-full"
             >
               Login
             </button>
 
             <button
               type="reset"
-              className="bg-gray-200 text-gray-900 p-2 rounded cursor-pointer"
+              className="bg-gray-200 text-gray-900 p-2 rounded cursor-pointer w-full"
             >
               Reset
             </button>
