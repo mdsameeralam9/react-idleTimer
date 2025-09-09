@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 
-const IDLE_LIMIT = 10;           // seconds before auto-logout
-const WARNING_THRESHOLD = 5;     // show dialog when remaining <= 5
+const IDLE_LIMIT = 10; // seconds before auto-logout
+const WARNING_THRESHOLD = 5; // show dialog when remaining <= 5
 
 function Dashboard() {
   const navigate = useNavigate();
@@ -17,7 +17,7 @@ function Dashboard() {
   // Tick down once per second
   useEffect(() => {
     const intervalId = setInterval(() => {
-      setRemaining(prev => prev - 1);
+      setRemaining((prev) => prev - 1);
     }, 1000);
 
     return () => clearInterval(intervalId);
@@ -67,9 +67,11 @@ function Dashboard() {
       onActivity();
     };
 
-    events.forEach(evt => window.addEventListener(evt, handler, { passive: true }));
+    events.forEach((evt) =>
+      window.addEventListener(evt, handler, { passive: true })
+    );
     return () => {
-      events.forEach(evt => window.removeEventListener(evt, handler));
+      events.forEach((evt) => window.removeEventListener(evt, handler));
     };
   }, [reset]);
 
@@ -77,14 +79,18 @@ function Dashboard() {
     <div className="flex w-full justify-center items-center flex-col gap-4 h-screen">
       <h2>User Logged In Successfully</h2>
       <p>Login at: {new Date().toLocaleString()}</p>
-      <p>Idle timeout in: {remaining} second{remaining === 1 ? "" : "s"}</p>
+      <p>
+        Idle timeout in: {remaining} second{remaining === 1 ? "" : "s"}
+      </p>
 
       {showDialog && (
         <div className="fixed inset-0 flex items-center justify-center bg-black/40">
           <div className="bg-white dark:bg-zinc-900 rounded-md p-4 w-[90%] max-w-sm shadow-lg">
             <h3 className="text-lg font-semibold mb-2">Still there?</h3>
             <p className="mb-4">
-              Auto-logout in <strong>{remaining}</strong> second{remaining === 1 ? "" : "s"}. Move mouse or press any key to stay signed in. 
+              Auto-logout in <strong>{remaining}</strong> second
+              {remaining === 1 ? "" : "s"}. Move mouse or press any key to stay
+              signed in.
             </p>
             <div className="flex gap-2 justify-end">
               <button
