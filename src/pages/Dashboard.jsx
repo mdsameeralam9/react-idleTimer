@@ -37,10 +37,10 @@ function Dashboard() {
     }
   }, [remaining, navigate]);
 
-  // Listen for real activity events and reset timer (debounced to avoid spam)
+ 
   useEffect(() => {
     let last = 0;
-    const MIN_GAP = 250; // ms
+    const MIN_GAP = 250;
 
     const onActivity = () => {
       const now = Date.now();
