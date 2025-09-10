@@ -14,7 +14,6 @@ function Dashboard() {
     setRemaining(IDLE_LIMIT);
   }, []);
 
-  // Tick down once per second
   useEffect(() => {
     const intervalId = setInterval(() => {
       setRemaining((prev) => prev - 1);
@@ -37,7 +36,6 @@ function Dashboard() {
     }
   }, [remaining, navigate]);
 
- 
   useEffect(() => {
     let last = 0;
     const MIN_GAP = 250;
@@ -58,7 +56,6 @@ function Dashboard() {
       "visibilitychange",
     ];
 
-    // Special-case: when tab becomes visible, treat as activity
     const handler = (e) => {
       if (e.type === "visibilitychange") {
         if (document.visibilityState === "visible") onActivity();
